@@ -18,7 +18,7 @@ function Header() {
           >
           </Nav>
           <Form className="d-flex">
-            <Button variant="outline-info">Login</Button>
+            <Button href='/profile' variant="outline-info">Login</Button>
           </Form>
       </Container>
     </Navbar>
