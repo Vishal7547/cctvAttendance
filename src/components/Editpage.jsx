@@ -3,7 +3,7 @@ import { Form, FormGroup, FormControl, FormLabel, Button, Col } from 'react-boot
 
 const ProfileForm = () => {
   const [firstName, setFirstName] = useState('Admin');
-  const [lastName, setLastName] = useState('.');
+  const [lastName, setLastName] = useState('Kumar');
   const [company, setCompany] = useState('');
   const [title, setTitle] = useState('');
   const [bio, setBio] = useState('');
@@ -19,11 +19,10 @@ const ProfileForm = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: '2px solid black',
     margin: '0 10vw',
    }}>
-     <div className="row">
-      <Col md={10} mdOffset={1}>
+     <div className="row" style={{minWidth: '250px', width: '50vw', boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px', padding: '20px', borderRadius: '20px'}}>
+      <Col md={50} mdOffset={1}>
         <Form onSubmit={handleSubmit}>
           {/* Avatar */}
           <FormGroup>
