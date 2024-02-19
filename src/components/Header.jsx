@@ -42,7 +42,7 @@ function Header({ setAuth, setIsAuthenticated, isAuthenticated }) {
   return (
     <Navbar expand="lg">
       <Container style={{ marginRight: "05px", marginLeft: "05px" }} fluid>
-        <Navbar.Brand href="#">
+        <Navbar.Brand href="/">
           <img
             src={logo}
             style={{ height: "50px", width: "100px" }}
