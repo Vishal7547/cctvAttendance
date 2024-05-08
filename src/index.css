@@ -2,3 +2,27 @@
   margin: 0;
   padding: 0;
 }
+
+.parents {
+  height: 100vh;
+  width: 100%;
+  /* position: fixed; */
+  overflow: scroll;
+}
+
+.child {
+  height: 140px;
+  width: 300px;
+  background-color: rgb(23, 59, 48);
+  border-radius: 10px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+.child p b {
+  font-size: large;
+}

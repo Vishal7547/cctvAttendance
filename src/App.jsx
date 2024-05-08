@@ -9,6 +9,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./components/Dashboard";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth as authenticate } from "../firebase";
+import Attendence from "./components/Attendence";
+import Analysisi from "./components/Analysisi";
 
 function App() {
   return (
@@ -42,7 +44,11 @@ function MainContent() {
   // Function to determine whether to render the Header or not
   const renderHeader = () => {
     // Check if the current route is not '/dashboard'
-    if (location.pathname !== "/dashboard") {
+    if (
+      location.pathname !== "/dashboard" &&
+      location.pathname !== "/attendence" &&
+      location.pathname !== "/analysis"
+    ) {
       return (
         <Header
           setAuth={setAuth}
@@ -70,6 +76,8 @@ function MainContent() {
         />
         <Route exact path="/edit" element={<Editpage />} />
         <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/attendence" element={<Attendence />} />
+        <Route exact path="/analysis" element={<Analysisi />} />
       </Routes>
     </>
   );

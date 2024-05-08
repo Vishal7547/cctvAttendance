@@ -31,14 +31,16 @@ const Sidebar = () => {
 
         <CDBSidebarContent className="sidebar-content" textColor="#333">
           <CDBSidebarMenu textColor="#fff">
-            <NavLink exact to="#" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="columns">Analytics</CDBSidebarMenuItem>
+            <NavLink exact to="/dashboard" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="columns">
+                All Student
+              </CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="#" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="table">Members</CDBSidebarMenuItem>
+            <NavLink exact to="/attendence" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="table">Attendance</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="#" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Staff</CDBSidebarMenuItem>
+            <NavLink exact to="/analysis" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Analysis</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
