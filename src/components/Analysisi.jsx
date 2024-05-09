@@ -66,13 +66,13 @@ function Analysisi() {
               <div className="child text-center">
                 <h1>Present</h1>
                 <p>
-                  <b>{totalPercentageOfAttendance} %</b>
+                  <b>{Math.floor(totalPercentageOfAttendance)} %</b>
                 </p>
               </div>
               <div className="child text-center">
                 <h1>Absent</h1>
                 <p>
-                  <b>{absent}</b>
+                  <b>{Math.floor(absent)} %</b>
                 </p>
               </div>
 
@@ -83,7 +83,7 @@ function Analysisi() {
                 </p>
               </div>
 
-              <div className="child text-center">
+              {/* <div className="child text-center">
                 <h1>EEE</h1>
                 <p>
                   <b>90%</b>
@@ -94,7 +94,7 @@ function Analysisi() {
                 <p>
                   <b>90%</b>
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
