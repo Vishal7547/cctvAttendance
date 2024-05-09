@@ -8,7 +8,7 @@ import logo from "../assets/Logo.png";
 function Attendence() {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
-  const apiUrl = "http://127.0.0.1:5000/api/Attendance";
+  const apiUrl = "http://127.0.0.1:5000";
 
   useEffect(() => {
     const fetchData = async () => {
