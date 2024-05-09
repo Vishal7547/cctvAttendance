@@ -10,6 +10,22 @@ function Attendence() {
   const [error, setError] = useState(null);
   const apiUrl = "http://127.0.0.1:5000/api/Attendance";
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(apiUrl);
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       const data = await response.json();
+  //       setUserData(data);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -18,7 +34,18 @@ function Attendence() {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setUserData(data);
+
+        // Filter unique registration numbers
+        const uniqueRegistrationNumbers = new Set();
+        const filteredData = data.filter((item) => {
+          if (uniqueRegistrationNumbers.has(item.registrationNumber)) {
+            return false; // Skip this item if registration number is not unique
+          }
+          uniqueRegistrationNumbers.add(item.registrationNumber);
+          return true; // Include this item if registration number is unique
+        });
+
+        setUserData(filteredData);
       } catch (error) {
         setError(error.message);
       }
@@ -89,8 +116,6 @@ function Attendence() {
                         <td>{s?.registration_no}</td>
                         <td>{s?.check_in}</td>
                         <td scope="col">{s?.check_out}</td>
-
-                        <td scope="col">Time</td>
                       </tr>
                     </>
                   ))}
