@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import Sidebar from "./Sidebar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,6 +7,29 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/Logo.png";
 
 function Analysisi() {
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
+  const apiUrl = "http://127.0.0.1:5000";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const totalPercentageOfAttendance = (userData.length / 60) * 100;
+  const absent = 100 - totalPercentageOfAttendance;
   return (
     <div
       style={{
@@ -35,26 +59,27 @@ function Analysisi() {
 
       <div className="parents">
         <div className="container">
-          <h4 className="text-success">Attendance</h4>
+          <h4 className="text-success">Attendance [ECE]</h4>
+
           <div className="row">
             <div className="d-flex justify-content-center align-items-center">
               <div className="child text-center">
-                <h1>ECE</h1>
+                <h1>Present</h1>
                 <p>
-                  <b>90%</b>
+                  <b>{totalPercentageOfAttendance} %</b>
                 </p>
               </div>
               <div className="child text-center">
-                <h1>CIVIL</h1>
+                <h1>Absent</h1>
                 <p>
-                  <b>90%</b>
+                  <b>{absent}</b>
                 </p>
               </div>
 
               <div className="child text-center">
-                <h1>ME</h1>
+                <h1>Total</h1>
                 <p>
-                  <b>90%</b>
+                  <b>100%</b>
                 </p>
               </div>
 
