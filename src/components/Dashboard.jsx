@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -6,6 +6,26 @@ import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/Logo.png";
 
 function Dashboard() {
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
+  const apiUrl = "http://127.0.0.1:5000/api/UserDetails";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div
       style={{
@@ -54,12 +74,12 @@ function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {[1, 2, 3, 4, 5].map((s, i) => (
+              {userData?.map((s, i) => (
                 <>
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <th scope="row">{i + 1}</th>
+                    <td>{s?.name}</td>
+                    <td>{s?.regno}</td>
                   </tr>
                 </>
               ))}
