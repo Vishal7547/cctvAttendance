@@ -28,7 +28,7 @@ function Analysisi() {
     fetchData();
   }, []);
 
-  const totalPercentageOfAttendance = (userData.length / 60) * 100;
+  const totalPercentageOfAttendance = (userData?.length / 60) * 100;
   const absent = 100 - totalPercentageOfAttendance;
   return (
     <div
